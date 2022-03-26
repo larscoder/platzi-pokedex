@@ -1,12 +1,10 @@
 import { Text, View } from "react-native";
-import React, { Component } from "react";
+import React from "react";
 
-export default class AccountScreen extends Component {
-  render() {
-    return (
-      <View>
-        <Text>AccountScreen</Text>
-      </View>
-    );
-  }
+export default function AccountScreen(props) {
+  return (
+    <View>
+      <Text>AccountScreen</Text>
+    </View>
+  );
 }

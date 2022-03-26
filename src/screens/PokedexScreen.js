@@ -1,12 +1,14 @@
-import { Text, View } from "react-native";
-import React, { Component } from "react";
+import { Button, Text, View } from "react-native";
+import React from "react";
 
-export default class PokedexScreen extends Component {
-  render() {
-    return (
-      <View>
-        <Text>PokedexScreen</Text>
-      </View>
-    );
-  }
+export default function PokedexScreen(props) {
+  return (
+    <View>
+      <Text>PokedexScreen</Text>
+      <Button
+        onPress={() => props.navigation.navigate("Pokemon")}
+        title="Go To Pokemon"
+      />
+    </View>
+  );
 }
