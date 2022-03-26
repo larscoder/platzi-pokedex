@@ -15,7 +15,6 @@ export default function PokedexScreen(props) {
   const loadPokemons = async () => {
     try {
       const response = await getPokemonsApi();
-      // console.log(response);
 
       const pokemosArray = [];
 

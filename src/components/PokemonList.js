@@ -1,9 +1,9 @@
 import React from "react";
 import { FlatList, Text, StyleSheet } from "react-native";
+import PokemonCard from "./PokemonCard";
 
 export default function PokemonList(props) {
   const { pokemons } = props;
-  console.log(pokemons);
 
   return (
     <FlatList
@@ -11,7 +11,7 @@ export default function PokemonList(props) {
       numColumns={2}
       showsVerticalScrollIndicator={false}
       key={(pokemon) => String(pokemon.id)}
-      renderItem={({ item }) => <Text>{item.name}</Text>}
+      renderItem={({ item }) => <PokemonCard pokemon={item} />}
       contentContainerStyle={styles.flatListContentContainer}
     />
   );
