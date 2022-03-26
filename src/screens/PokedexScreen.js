@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Button, Text, View } from "react-native";
-import { getPokemonsApi } from "../api/pokemon";
+import { SafeAreaView } from "react-native";
+import { getPokemonsApi, getPokemonDetailByUrlApi } from "../api/pokemon";
+import PokemonList from "../components/PokemonList";
 
 export default function PokedexScreen(props) {
+  const [pokemons, setPokemons] = useState([]);
+
   useEffect(() => {
     (async () => {
       await loadPokemons();
@@ -12,19 +15,31 @@ export default function PokedexScreen(props) {
   const loadPokemons = async () => {
     try {
       const response = await getPokemonsApi();
-      console.log(response);
+      // console.log(response);
+
+      const pokemosArray = [];
+
+      for await (const pokemon of response.results) {
+        const pokemonDetail = await getPokemonDetailByUrlApi(pokemon.url);
+
+        pokemosArray.push({
+          id: pokemonDetail.id,
+          name: pokemonDetail.name,
+          type: pokemonDetail.types[0].type.name,
+          order: pokemonDetail.order,
+          image: pokemonDetail.sprites.other["official-artwork"].front_default,
+        });
+      }
+
+      setPokemons([...pokemons, ...pokemosArray]);
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <View>
-      <Text>PokedexScreen</Text>
-      <Button
-        onPress={() => props.navigation.navigate("Pokemon")}
-        title="Go To Pokemon"
-      />
-    </View>
+    <SafeAreaView>
+      <PokemonList pokemons={pokemons} />
+    </SafeAreaView>
   );
 }
