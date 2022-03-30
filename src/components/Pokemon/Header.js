@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  SafeAreaView,
+  Platform,
+} from "react-native";
 import { capitalize } from "lodash";
 import getColorByPokemonType from "../../utils/getColorByPokemonType";
 
@@ -33,7 +40,7 @@ const styles = StyleSheet.create({
     transform: [{ scaleX: 2 }],
   },
   content: {
-    marginTop: 30,
+    marginTop: Platform.OS === "android" ? 70 : 30,
     marginHorizontal: 20,
   },
   header: {
