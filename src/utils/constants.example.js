@@ -1,4 +1,5 @@
 export const API_HOST = "";
+
 export const POKEMON_TYPE_COLORS = {
   normal: "#A8A878",
   fighting: "#C03028",
@@ -18,4 +19,16 @@ export const POKEMON_TYPE_COLORS = {
   dragon: "#7038F8",
   dark: "#705848",
   fairy: "#EE99AC",
+};
+
+export const user = {
+  username: "",
+  password: "",
+};
+
+export const userDetail = {
+  username: "",
+  firstname: "",
+  lastname: "",
+  email: "",
 };
