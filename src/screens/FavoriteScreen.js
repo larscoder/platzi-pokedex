@@ -5,6 +5,7 @@ import { getPokemonsFavoriteApi } from "../api/favorite";
 import { getPokemonDetailIdApi } from "../api/pokemon";
 import useAuth from "../hooks/useAuth";
 import PokemonList from "../components/PokemonList";
+
 export default function FavoriteScreen(props) {
   const [pokemons, setPokemons] = useState([]);
   const { auth } = useAuth();

@@ -39,7 +39,6 @@ export default function Favorite(props) {
     (async () => {
       try {
         const response = await isPokemonFavoriteApi(id);
-        console.log(response);
         setIsFavorite(response);
       } catch (error) {
         setIsFavorite(false);
